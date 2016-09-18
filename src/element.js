@@ -15,4 +15,8 @@ class Element {
     scaledPixel(pxValue, scale) {
         return pxValue / scale;
     }
+    rotated(point, around, degrees) {
+        let radian = degrees * Math.PI / 180;
+        return around.x + (point.x - around.x) * Math.cos(radian) - (point.y-around.y) * Math.sin(radian);
+    }
 }

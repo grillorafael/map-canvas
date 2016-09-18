@@ -1,10 +1,10 @@
-class DotElement extends Element {
+class ArrowElement extends Element {
     constructor(coordinate, style, data) {
         super(coordinate, data);
         this.updateStyle(style);
     }
     updateStyle(s) {
-        this.style_ = Object.assign(DotElement.DefaultStyle(), s || {});
+        this.style_ = Object.assign(ArrowElement.DefaultStyle(), s || {});
     }
     draw(ctx, scale, latLngPx) {
         let cx = latLngPx.x;
@@ -12,8 +12,15 @@ class DotElement extends Element {
 
         ctx.beginPath();
 
+        ctx.moveTo(cx, cy - this.scaledPixel(this.style_.height, scale) / 2);
+
         ctx.globalAlpha = this.style_.opacity;
-        ctx.arc(cx, cy, this.scaledPixel(2 * this.style_.radius, scale), 0, 2 * Math.PI);
+
+        ctx.lineTo(cx - this.scaledPixel(this.style_.width, scale), cy);
+        ctx.lineTo(cx, cy - this.scaledPixel(this.style_.height, scale) * 2);
+        ctx.lineTo(cx + this.scaledPixel(this.style_.width, scale), cy);
+        ctx.closePath();
+
         ctx.lineWidth = this.scaledPixel(this.style_.strokeWidth, scale);
 
         if(this.style_.fillColor) {
@@ -27,8 +34,10 @@ class DotElement extends Element {
 
     static DefaultStyle() {
         return {
+            heading: 0,
             opacity: 1,
-            radius: 8,
+            width: 16,
+            height: 16,
             strokeWidth: 1,
             strokeColor: 'black',
             fillColor: false

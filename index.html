@@ -19,6 +19,7 @@
 
 <script src="/src/element.js"></script>
 <script src="/src/dot-element.js"></script>
+<script src="/src/arrow-element.js"></script>
 <script src="/src/canvas-manager.js"></script>
 
 <script>
@@ -43,11 +44,23 @@
     let map = new google.maps.Map(mapElement, { center, zoom, noClear });
     let canvasManager = new CanvasManager(map);
 
-    for (let i = 1; i <= 20000; i++) {
+    for (let i = 1; i <= 2000; i++) {
+        let style = i % 2 === 0 ? {
+            opacity: 0.5,
+            fillColor: 'dargrey'
+        } : {};
         canvasManager.addElement(
-            new DotElement(randomCoord(), {
-                opacity: i%2 === 0 ? 0.5 : 1
-            }, {i})
+            new DotElement(randomCoord(), style, {i})
+        );
+    }
+
+    for (let i = 1; i <= 1000; i++) {
+        let style = i % 2 === 0 ? {
+            opacity: 0.5,
+            fillColor: 'dargrey'
+        } : {};
+        canvasManager.addElement(
+            new ArrowElement(randomCoord(), style, {i})
         );
     }
 </script>
