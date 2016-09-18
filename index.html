@@ -13,9 +13,13 @@
 <body>
 <div id="map"></div>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script src="/src/canvas-layer/CanvasLayerOptions.js"></script>
+<script src="/src/canvas-layer/CanvasLayer.js"></script>
+
 <script src="/src/element.js"></script>
 <script src="/src/dot-element.js"></script>
-<script src="/src/canvas-layer.js"></script>
+<script src="/src/canvas-manager.js"></script>
 
 <script>
     function getRandomInRange(from, to) {
@@ -37,11 +41,13 @@
     let noClear = true;
 
     let map = new google.maps.Map(mapElement, { center, zoom, noClear });
-    let canvasOverlay = new CanvasLayer(map);
+    let canvasManager = new CanvasManager(map);
 
     for (let i = 1; i <= 20000; i++) {
-        canvasOverlay.addElement(
-            new DotElement(randomCoord(), {i})
+        canvasManager.addElement(
+            new DotElement(randomCoord(), {
+                opacity: i%2 === 0 ? 0.5 : 1
+            }, {i})
         );
     }
 </script>

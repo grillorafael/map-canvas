@@ -10,9 +10,9 @@ class Element {
         return this.data_;
     }
     draw(ctx, latLngPx) {
-        this.log("Please use an implemented component");
+        console.log("Please use an implemented component");
     }
-    log(v) {
-        console.log(`%c[${this.name_ ? this.name_ : 'Element'}]`, 'color:blue;', v);
+    scaledPixel(pxValue, scale) {
+        return pxValue / scale;
     }
 }
