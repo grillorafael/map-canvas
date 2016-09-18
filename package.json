@@ -1,0 +1,27 @@
+{
+    "name": "map-canvas",
+    "version": "1.0.0",
+    "description": "A Canvas Layer for fast google maps markers",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "browser-sync start --server --files \"**/**\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/grillorafael/map-canvas.git"
+    },
+    "keywords": [
+        "google",
+        "maps",
+        "canvas"
+    ],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/grillorafael/map-canvas/issues"
+    },
+    "homepage": "https://github.com/grillorafael/map-canvas#readme",
+    "devDependencies": {
+        "browser-sync": "^2.16.0"
+    }
+}
